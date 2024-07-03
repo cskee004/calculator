@@ -1,3 +1,24 @@
+const container = document.querySelector("#container");
+const display = document.querySelector("#display");
+const operand = document.querySelectorAll(".operand");
+const operator = document.querySelector(".operator");
+
+operand.forEach(element => element.addEventListener('click', event => {
+    console.log(event.target.getAttribute("data-el"));
+  }));
+
+
+
+
+
+
+
+
+
+
+
+
+
 function operate(x, y, operator) {
 
     switch (operator) {
@@ -31,8 +52,3 @@ function multiply(x, y) {
 function divide(x, y) {
     return x / y;
 }
-
-console.log(add(2, 2));
-console.log(subtract(3, 2));
-console.log(multiply(2, 2));
-console.log(divide(10, 2));
