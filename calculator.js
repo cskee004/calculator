@@ -1,22 +1,8 @@
-// Goal: Add an event listener to the button types. DONE
-// Goal: Create an object that holds two operands and one operator. DONE
-// Goal: Create a function operate that takes the calculation object and then calls the function.
-// Goal: Wrap event listeners into a function
-
-
-
 const container = document.querySelector("#container");
 const operand = document.querySelectorAll(".operand");
 const operator = document.querySelectorAll(".operator");
 const clear = document.querySelectorAll(".clear");
 const display = document.querySelector("#display");
-
-function calcObj(op1, op2, operator) {
-    this.op1 = op1;
-    this.op2 = op2;
-    this.operator = operator;
-    result = 0;
-}
 
 clear.forEach(element => element.addEventListener('click', event => { 
     console.log(event.target.getAttribute("data-element"));
@@ -24,24 +10,14 @@ clear.forEach(element => element.addEventListener('click', event => {
     // Delete calcObj on clear button
 }));
 
-newFunction();
-
-function newFunction() {
-    operator.forEach(element => element.addEventListener('click', event => {
+operator.forEach(element => element.addEventListener('click', event => {
         console.log(event.target.getAttribute("data-element"));
-    }));
+}));
 
-    operand.forEach(element => element.addEventListener('click', event => {
+operand.forEach(element => element.addEventListener('click', event => {
         console.log(Number(event.target.getAttribute("data-element")));
-    }));
-}
+}));
 
-function setUp() {
-    let test = new calcObj(1, 2, '+');
-    operate(test);
-}
-
-setUp();
 
 function operate(arr) {
 
