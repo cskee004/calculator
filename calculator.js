@@ -5,7 +5,7 @@ const clear = document.querySelectorAll(".clear");
 const display = document.querySelector("#display");
 const equal = document.querySelectorAll(".equal")
 
-let calcArr = [];
+let calcArr = [2, 2, 2, '+', 2, 2, 2];
 
 //----------------------------------------------------------------------------->
 clear.forEach(element => element.addEventListener('click', event => { 
@@ -31,27 +31,29 @@ operand.forEach(element => element.addEventListener('click', event => {
     
 }));
 //----------------------------------------------------------------------------->
-//calcArr[i] == "+" || calcArr[i] == "-" || calcArr[i] == "*" || calcArr[i] == "/"
-
 
 function operate(calcArr) {
 
         let op = '';
         let op0 = 0;
+        let op1 = 0;
+        let tempValue = 0;
         for (let i = 0; i < calcArr.length; ++i) {
-            if (calcArr[i] == "+" || calcArr[i] == "-" || calcArr[i] == "*" || calcArr[i] == "/") {
-                op = calcArr[i];
+            if (typeof calcArr[i] !== 'number') {
+                op = calcArr[i]; 
+                // Encounted an operator, therefore the current value of op0 represents first operand.  
+                // Reset tempvalue to 0 for the next operand value.
+                op0 = tempValue;
+                tempValue = 0;
             }
             else {
-                op0 += calcArr[i];
+                tempValue += calcArr[i];
             }
+        
+            op1 = tempValue;
         }
-
-        console.log(op);
-        console.log(op0);
 }
 //----------------------------------------------------------------------------->
-
 
 function add(arr) {
     let c = arr.op1 + arr.op2;
