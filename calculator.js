@@ -5,7 +5,7 @@ const clear = document.querySelectorAll(".clear");
 const display = document.querySelector("#display");
 const equal = document.querySelectorAll(".equal")
 
-let calcArr = [2, 2, 2, '+', 2, 2, 2];
+let calcArr = [2, 2, 2, '/', 2, 2, 2];
 
 //----------------------------------------------------------------------------->
 clear.forEach(element => element.addEventListener('click', event => { 
@@ -33,7 +33,6 @@ operand.forEach(element => element.addEventListener('click', event => {
 //----------------------------------------------------------------------------->
 
 function operate(calcArr) {
-
         let op = '';
         let op0 = 0;
         let op1 = 0;
@@ -52,37 +51,52 @@ function operate(calcArr) {
         
             op1 = tempValue;
         }
+        solve(op0, op, op1);
+}
+
+function solve(op0, op, op1) {
+    switch (op) {
+        case '+':
+            console.log(add(op0, op1));
+            display.innerHTML = add(op0, op1);
+            break;
+        case '-':
+            console.log(subtract(op0, op1));
+            display.innerHTML = subtract(op0, op1);
+            break;
+        case '*':
+            console.log(multiply(op0, op1));
+            display.innerHTML = multiply(op0, op1);
+            break;
+        case "/": 
+            console.log(divide(op0, op1));
+            display.innerHTML = divide(op0, op1);
+            break;
+
+    }
 }
 //----------------------------------------------------------------------------->
 
-function add(arr) {
-    let c = arr.op1 + arr.op2;
-    arr.result = c;
-    display.innerHTML = c;
+function add(op0, op1) {
+    let c = op0 + op1;
     return c;
 }
 //----------------------------------------------------------------------------->
 
-function subtract(arr) {
-    let c = arr.op1 - arr.op2;
-    arr.result = c;
-    display.innerHTML = c;
+function subtract(op0, op1) {
+    let c = op0 - op1;
     return c;
 }
 //----------------------------------------------------------------------------->
 
-function multiply(arr) {
-    let c = arr.op1 * arr.op2;
-    arr.result = c;
-    display.innerHTML = c;
+function multiply(op0, op1) {
+    let c = op0 * op1;
     return c;
 }
 //----------------------------------------------------------------------------->
 
-function divide(arr) {
-    let c = arr.op1 / arr.op2;
-    arr.result = c;
-    display.innerHTML = c;
+function divide(op0, op1) {
+    let c = op0 / op1;
     return c;
 }
 //----------------------------------------------------------------------------->
