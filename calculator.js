@@ -6,11 +6,6 @@ const display = document.querySelector("#display");
 const equal = document.querySelectorAll(".equal")
 
 let calcArr = [];
-
-let testArr = ["2", "5"]
-
-
-
 //----------------------------------------------------------------------------->
 clear.forEach(element => element.addEventListener('click', event => { 
    resetCalc();
@@ -47,7 +42,6 @@ function operate(calcArr) {
             }
             else {
                 tempValue += calcArr[i];
-                
             }
             op1 = Number(tempValue);
         }
@@ -89,27 +83,22 @@ function solve(op0, op, op1) {
 }
 //----------------------------------------------------------------------------->
 function add(op0, op1) {
-    let c = op0 + op1;
-    return c;
+    return op0 + op1;
 }
 //----------------------------------------------------------------------------->
 function subtract(op0, op1) {
-    let c = op0 - op1;
-    return c;
+    return op0 - op1;
 }
 //----------------------------------------------------------------------------->
 function multiply(op0, op1) {
-    let c = op0 * op1;
-    return c;
+    return op0 * op1;
 }
 //----------------------------------------------------------------------------->
 function divide(op0, op1) {
-    let c = op0 / op1;
-    return c;
+    return op0 / op1;
 }
 //----------------------------------------------------------------------------->
 function resetCalc() {
-    calcArr.splice(0, calcArr. length);
-    console.table(calcArr);
+    calcArr.splice(0, calcArr.length);
     display.innerHTML = "clear"
 }
