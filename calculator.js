@@ -7,9 +7,14 @@ const equal = document.querySelectorAll(".equal")
 
 let calcArr = [];
 
+let testArr = ["2", "5"]
+
+
+
 //----------------------------------------------------------------------------->
 clear.forEach(element => element.addEventListener('click', event => { 
-    window.location.reload();
+   // window.location.reload();
+   resetCalc();
 }));
 //----------------------------------------------------------------------------->
 equal.forEach(element => element.addEventListener('click', event => { 
@@ -24,9 +29,9 @@ operator.forEach(element => element.addEventListener('click', event => {
 //----------------------------------------------------------------------------->
 operand.forEach(element => element.addEventListener('click', event => {
     let input = Number(event.target.getAttribute("data-element"));
+    // let input = event.target.getAttribute("data-element");
     display.innerHTML = input;
     calcArr.push(input);
-    
 }));
 //----------------------------------------------------------------------------->
 function operate(calcArr) {
@@ -49,7 +54,7 @@ function operate(calcArr) {
         
             op1 = tempValue;
         }
-        
+
         solve(op0, op, op1);
 }
 //----------------------------------------------------------------------------->
@@ -59,24 +64,33 @@ function solve(op0, op, op1) {
         return;
     }
     else {
+        let prev = 0;
         switch (op) {
             case '+':
                 console.log(add(op0, op1));
                 display.innerHTML = add(op0, op1);
+                prev = add(op0, op1);
                 break;
             case '-':
                 console.log(subtract(op0, op1));
                 display.innerHTML = subtract(op0, op1);
+                prev = subtract(op0, op1);
                 break;
             case '*':
                 console.log(multiply(op0, op1));
                 display.innerHTML = multiply(op0, op1);
+                prev = multiply(op0, op1)
                 break;
             case "/": 
                 console.log(divide(op0, op1));
                 display.innerHTML = divide(op0, op1);
+                prev = divide(op0, op1);
                 break;
         }
+
+        calcArr.splice(0, calcArr.length);
+        calcArr.push(prev);
+        console.table(calcArr)
     }
 }
 //----------------------------------------------------------------------------->
@@ -100,4 +114,8 @@ function divide(op0, op1) {
     return c;
 }
 //----------------------------------------------------------------------------->
-
+function resetCalc() {
+    calcArr.splice(0, calcArr. length);
+    console.table(calcArr);
+    display.innerHTML = "clear"
+}
