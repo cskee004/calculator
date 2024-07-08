@@ -13,7 +13,6 @@ let testArr = ["2", "5"]
 
 //----------------------------------------------------------------------------->
 clear.forEach(element => element.addEventListener('click', event => { 
-   // window.location.reload();
    resetCalc();
 }));
 //----------------------------------------------------------------------------->
@@ -28,33 +27,30 @@ operator.forEach(element => element.addEventListener('click', event => {
 }));
 //----------------------------------------------------------------------------->
 operand.forEach(element => element.addEventListener('click', event => {
-    let input = Number(event.target.getAttribute("data-element"));
-    // let input = event.target.getAttribute("data-element");
+    let input = event.target.getAttribute("data-element");
     display.innerHTML = input;
     calcArr.push(input);
 }));
 //----------------------------------------------------------------------------->
 function operate(calcArr) {
+        
         let op = '';
         let op0 = 0;
         let op1 = 0;
         let tempValue = 0;
 
         for (let i = 0; i < calcArr.length; ++i) {
-            if (typeof calcArr[i] !== 'number') {
-                
+            if (calcArr[i] == '+' || calcArr[i] == '-' || calcArr[i] == '*' || calcArr[i] == '/') { 
                 op = calcArr[i]; 
-                op0 = tempValue;
+                op0 = Number(tempValue);
                 tempValue = 0;
             }
             else {
-                
                 tempValue += calcArr[i];
+                
             }
-        
-            op1 = tempValue;
+            op1 = Number(tempValue);
         }
-
         solve(op0, op, op1);
 }
 //----------------------------------------------------------------------------->
@@ -87,10 +83,8 @@ function solve(op0, op, op1) {
                 prev = divide(op0, op1);
                 break;
         }
-
         calcArr.splice(0, calcArr.length);
         calcArr.push(prev);
-        console.table(calcArr)
     }
 }
 //----------------------------------------------------------------------------->
