@@ -1,4 +1,7 @@
 # Simple HTML Calculator 
+
+https://cskee004.github.io/calculator/
+
 Assignment intructions can be found [here](https://www.theodinproject.com/lessons/foundations-calculator) 
 
 ## Requirements 
