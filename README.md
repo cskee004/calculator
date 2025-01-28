@@ -1,3 +1,7 @@
+### Acknowledgement
+
+Thank you to the creators of the Odin Project for putting together a free cirriculum for learning web development.
+
 # Simple HTML Calculator 
 
 https://cskee004.github.io/calculator/
